@@ -69,7 +69,9 @@ function renderLesson() {
 
     </article>
   `;
-    renderExercise(lesson);
+    if(lesson.exercise) {
+        renderExercise(lesson);
+    }
     renderQuiz(lesson);
     setupLessonNavigation();
 }
