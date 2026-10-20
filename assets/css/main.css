@@ -1,0 +1,70 @@
+:root {
+  font-family: Arial, sans-serif;
+  color: #1f2937;
+  background: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  height: 64px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+}
+
+#sidebar {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  width: 260px;
+  height: calc(100vh - 64px);
+  padding: 24px;
+  border-right: 1px solid #ddd;
+  background: #f8f9fa;
+}
+
+#main {
+  margin-left: 260px;
+  padding: 48px;
+  max-width: 900px;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+nav button {
+  text-align: left;
+  padding: 10px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+nav button:hover {
+  background: #e9ecef;
+}
+
+.lesson-example {
+  margin: 24px 0;
+  padding: 16px;
+  background: #f5f5f5;
+  border-left: 4px solid #555;
+}
+
+.quiz {
+  margin-top: 32px;
+  padding: 20px;
+  border: 1px solid #ddd;
+}
