@@ -1,75 +1,90 @@
-import { contextLesson } from "./content.js";
+import { lessons } from "./content.js";
+
+let currentLessonIndex = 0;
 
 const main = document.querySelector("#main");
 const lessonsNavigation = document.querySelector("#lessons");
 
 function renderNavigation() {
-    const button = document.createElement("button");
+    lessonsNavigation.innerHTML = "";
 
-    button.textContent = contextLesson.title;
+    lessons.forEach((lesson, index) => {
+        const button = document.createElement("button");
 
-    button.addEventListener("click", () => {
-        renderLesson();
+        button.textContent = lesson.title;
+
+        button.addEventListener("click", () => {
+            currentLessonIndex = index;
+            renderLesson();
+        });
+
+        lessonsNavigation.appendChild(button);
     });
-
-    lessonsNavigation.appendChild(button);
 }
 
 function renderLesson() {
+    const lesson = lessons[currentLessonIndex];
     main.innerHTML = `
     <article>
-      <h1>${contextLesson.title}</h1>
+      <h1>${lesson.title}</h1>
 
-      <p>${contextLesson.introduction}</p>
+      <p>${lesson.introduction}</p>
 
-      <p>${contextLesson.explanation}</p>
+      <p>${lesson.explanation}</p>
 
         <section class="lesson-example">
         <h2>Example</h2>
 
         <h3>Weak</h3>
-        <p>${contextLesson.example.weak}</p>
+        <p>${lesson.example.weak}</p>
 
         <h3>Better</h3>
-        <p>${contextLesson.example.better}</p>
+        <p>${lesson.example.better}</p>
         </section>
 
+        ${lesson.exercise ? `
         <section class="exercise">
         <h2>Try it yourself</h2>
-
-        <p>${contextLesson.exercise.question}</p>
-        
+        <p>${lesson.exercise.question}</p>
         <div id="exercise-options"></div>
         <button id="check-exercise">Check answers</button>
         <p id="exercise-feedback"></p>
         </section>
+        ` : ""}
 
         <section class="quiz">
         <h2>Quick check</h2>
 
-        <p>${contextLesson.quiz.question}</p>
+        <p>${lesson.quiz.question}</p>
 
         <div id="quiz-answers"></div>
 
         <p id="quiz-feedback"></p>
         </section>
+
+        <nav class="lesson-navigation" aria-label="Lesson navigation">
+        <button id="previous-lesson" disabled>Previous</button>
+        <button id="next-lesson">Next</button>
+        </nav>
+
     </article>
   `;
-    renderExercise();
-    renderQuiz();
+    renderExercise(lesson);
+    renderQuiz(lesson);
+    setupLessonNavigation();
 }
 
-function renderQuiz() {
+function renderQuiz(lesson) {
     const answersContainer = document.querySelector("#quiz-answers");
     const feedback = document.querySelector("#quiz-feedback");
 
-    contextLesson.quiz.answers.forEach((answer, index) => {
+    lesson.quiz.answers.forEach((answer, index) => {
         const button = document.createElement("button");
 
         button.textContent = answer;
 
         button.addEventListener("click", () => {
-            if (index === contextLesson.quiz.correctAnswer) {
+            if (index === lesson.quiz.correctAnswer) {
                 feedback.textContent = "Correct.";
             } else {
                 feedback.textContent = "Not quite. Try again.";
@@ -80,12 +95,12 @@ function renderQuiz() {
     });
 }
 
-function renderExercise() {
+function renderExercise(lesson) {
     const optionsContainer = document.querySelector("#exercise-options");
     const checkButton = document.querySelector("#check-exercise");
     const feedback = document.querySelector("#exercise-feedback");
 
-    contextLesson.exercise.options.forEach((option, index) => {
+    lesson.exercise.options.forEach((option, index) => {
         const label = document.createElement("label");
 
         label.innerHTML = `
@@ -103,7 +118,7 @@ function renderExercise() {
 
         checkboxes.forEach((checkbox, index) => {
             const shouldBeSelected =
-                contextLesson.exercise.options[index].correct;
+                lesson.exercise.options[index].correct;
 
             if (checkbox.checked !== shouldBeSelected) {
                 allCorrect = false;
@@ -116,6 +131,28 @@ function renderExercise() {
             feedback.textContent = "Not quite. Look for information directly related to the incident.";
         }
     });
+}
+
+function setupLessonNavigation() {
+  const previousButton = document.querySelector("#previous-lesson");
+  const nextButton = document.querySelector("#next-lesson");
+
+  previousButton.disabled = currentLessonIndex === 0;
+  nextButton.disabled = currentLessonIndex === lessons.length - 1;
+
+  previousButton.addEventListener("click", () => {
+    if (currentLessonIndex > 0) {
+      currentLessonIndex--;
+      renderLesson();
+    }
+  });
+
+  nextButton.addEventListener("click", () => {
+    if (currentLessonIndex < lessons.length - 1) {
+      currentLessonIndex++;
+      renderLesson();
+    }
+  });
 }
 
 renderNavigation();

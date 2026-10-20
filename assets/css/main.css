@@ -8,6 +8,13 @@
     box-sizing: border-box;
 }
 
+.logo-img img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  display: block;
+}
+
 body {
     margin: 0;
 }
@@ -56,6 +63,7 @@ nav button:hover {
     background: #e9ecef;
 }
 
+/* LESSON */
 .lesson-example {
     margin: 24px 0;
     padding: 16px;
@@ -63,12 +71,32 @@ nav button:hover {
     border-left: 4px solid #555;
 }
 
+.lesson-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid #ddd;
+}
+
+.lesson-navigation button {
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.lesson-navigation button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* QUIZ */
 .quiz {
     margin-top: 32px;
     padding: 20px;
     border: 1px solid #ddd;
 }
 
+/* EXERCISE */
 .exercise {
     margin-top: 32px;
     padding: 20px;
@@ -86,9 +114,3 @@ nav button:hover {
     cursor: pointer;
 }
 
-.logo-img img {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-  display: block;
-}
