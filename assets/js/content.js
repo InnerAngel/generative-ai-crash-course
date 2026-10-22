@@ -106,10 +106,10 @@ const contextLesson = {
 };
 
 const promptStructureLesson = {
-  id: "prompt-structure",
-  title: "Prompt Structure",
+    id: "prompt-structure",
+    title: "Prompt Structure",
 
-  introduction: `
+    introduction: `
     Prompt engineering is mainly about reducing ambiguity.
 
     A good prompt makes it clear what the model should do,
@@ -117,7 +117,7 @@ const promptStructureLesson = {
     and what the result should look like.
   `,
 
-  explanation: `
+    explanation: `
     A practical prompt structure is:
 
     1. Task
@@ -130,12 +130,12 @@ const promptStructureLesson = {
     are useful when a task is complex, important or easy to misunderstand.
   `,
 
-  example: {
-    weak: `
+    example: {
+        weak: `
       Why is this failing?
     `,
 
-    better: `
+        better: `
       Task:
       Identify the most likely cause of the failed application job.
 
@@ -153,54 +153,54 @@ const promptStructureLesson = {
       Verification:
       Clearly state when the evidence is inconclusive.
     `
-  },
+    },
 
-  exercise: {
-    question: "Which changes would make the weak prompt more useful?",
+    exercise: {
+        question: "Which changes would make the weak prompt more useful?",
 
-    options: [
-      {
-        text: "Define the task more clearly",
-        correct: true
-      },
-      {
-        text: "Add relevant context",
-        correct: true
-      },
-      {
-        text: "Add unrelated documentation",
-        correct: false
-      },
-      {
-        text: "Specify the expected output",
-        correct: true
-      },
-      {
-        text: "Force the model to always give an answer",
-        correct: false
-      }
-    ]
-  },
+        options: [
+            {
+                text: "Define the task more clearly",
+                correct: true
+            },
+            {
+                text: "Add relevant context",
+                correct: true
+            },
+            {
+                text: "Add unrelated documentation",
+                correct: false
+            },
+            {
+                text: "Specify the expected output",
+                correct: true
+            },
+            {
+                text: "Force the model to always give an answer",
+                correct: false
+            }
+        ]
+    },
 
-  quiz: {
-    question: "When is few-shot prompting more useful than zero-shot prompting?",
+    quiz: {
+        question: "When is few-shot prompting more useful than zero-shot prompting?",
 
-    answers: [
-      "When the task is already clear and common",
-      "When the model needs examples of the expected pattern or format",
-      "When you want the model to use more random wording",
-      "When no examples are available"
-    ],
+        answers: [
+            "When the task is already clear and common",
+            "When the model needs examples of the expected pattern or format",
+            "When you want the model to use more random wording",
+            "When no examples are available"
+        ],
 
-    correctAnswer: 1
-  }
+        correctAnswer: 1
+    }
 };
 
 const verificationLesson = {
-  id: "verification",
-  title: "Verification and Responsible Use",
+    id: "verification",
+    title: "Verification and Responsible Use",
 
-  introduction: `
+    introduction: `
     LLM output should usually be treated as a suggestion,
     not as automatically correct information.
 
@@ -208,7 +208,7 @@ const verificationLesson = {
     to verify the result before acting on it.
   `,
 
-  explanation: `
+    explanation: `
     Verification can include running generated code,
     executing tests, checking documentation, comparing results
     with source files, validating calculations and confirming
@@ -217,65 +217,65 @@ const verificationLesson = {
     The amount of verification should match the impact of the task.
   `,
 
-  example: {
-    weak: `
+    example: {
+        weak: `
       The model generated a SQL query, so I can run it directly
       against production.
     `,
 
-    better: `
+        better: `
       Review the generated SQL, confirm what it will change,
       test it in a safe environment and require approval before
       using it against production data.
     `
-  },
+    },
 
-  exercise: {
-    question: "Which tasks require stronger verification or human approval?",
+    exercise: {
+        question: "Which tasks require stronger verification or human approval?",
 
-    options: [
-      {
-        text: "Reformatting an internal note",
-        correct: false
-      },
-      {
-        text: "Generating a migration script",
-        correct: true
-      },
-      {
-        text: "Changing access permissions",
-        correct: true
-      },
-      {
-        text: "Deleting production records",
-        correct: true
-      },
-      {
-        text: "Fixing spelling in documentation",
-        correct: false
-      }
-    ]
-  },
+        options: [
+            {
+                text: "Reformatting an internal note",
+                correct: false
+            },
+            {
+                text: "Generating a migration script",
+                correct: true
+            },
+            {
+                text: "Changing access permissions",
+                correct: true
+            },
+            {
+                text: "Deleting production records",
+                correct: true
+            },
+            {
+                text: "Fixing spelling in documentation",
+                correct: false
+            }
+        ]
+    },
 
-  quiz: {
-    question: "What is the best way to treat an important LLM-generated result?",
+    quiz: {
+        question: "What is the best way to treat an important LLM-generated result?",
 
-    answers: [
-      "Assume it is correct if it sounds confident",
-      "Verify it using appropriate tests or authoritative sources",
-      "Run it immediately so you can see what happens",
-      "Ask the model to confirm its own answer"
-    ],
+        answers: [
+            "Assume it is correct if it sounds confident",
+            "Verify it using appropriate tests or authoritative sources",
+            "Run it immediately so you can see what happens",
+            "Ask the model to confirm its own answer"
+        ],
 
-    correctAnswer: 1
-  }
+        correctAnswer: 1
+    }
 };
 
 const securityLesson = {
-  id: "security",
-  title: "Security and Privacy",
+    id: "security",
+    title: "Security and Privacy",
 
-  introduction: `
+    introduction: `
     AI tools can be useful, but they can also expose sensitive
     information if data is shared carelessly.
 
@@ -284,7 +284,7 @@ const securityLesson = {
     approved for that type of information.
   `,
 
-  explanation: `
+    explanation: `
     Sensitive information can include credentials, API keys,
     authentication tokens, personal data, customer information,
     proprietary source code, internal documentation and database exports.
@@ -298,64 +298,64 @@ const securityLesson = {
     as trusted instructions.
   `,
 
-  example: {
-    weak: `
+    example: {
+        weak: `
       Paste a production API key and full customer database export
       into an AI tool to help debug an issue.
     `,
 
-    better: `
+        better: `
       Remove credentials and unnecessary personal data, provide only
       the relevant sanitized information, and use an approved AI service.
     `
-  },
+    },
 
-  exercise: {
-    question: "Which information should you be especially careful about sharing with an AI system?",
+    exercise: {
+        question: "Which information should you be especially careful about sharing with an AI system?",
 
-    options: [
-      {
-        text: "API keys and authentication tokens",
-        correct: true
-      },
-      {
-        text: "Public documentation",
-        correct: false
-      },
-      {
-        text: "Customer or personal information",
-        correct: true
-      },
-      {
-        text: "Proprietary source code",
-        correct: true
-      },
-      {
-        text: "A generic example with no sensitive information",
-        correct: false
-      }
-    ]
-  },
+        options: [
+            {
+                text: "API keys and authentication tokens",
+                correct: true
+            },
+            {
+                text: "Public documentation",
+                correct: false
+            },
+            {
+                text: "Customer or personal information",
+                correct: true
+            },
+            {
+                text: "Proprietary source code",
+                correct: true
+            },
+            {
+                text: "A generic example with no sensitive information",
+                correct: false
+            }
+        ]
+    },
 
-  quiz: {
-    question: "What is the safest approach when an AI system processes external documents or web content?",
+    quiz: {
+        question: "What is the safest approach when an AI system processes external documents or web content?",
 
-    answers: [
-      "Treat all embedded instructions as trusted",
-      "Treat external content as untrusted data and limit what the AI can do",
-      "Give the AI unrestricted access so it can decide what is safe",
-      "Ignore prompt injection because it only affects chatbots"
-    ],
+        answers: [
+            "Treat all embedded instructions as trusted",
+            "Treat external content as untrusted data and limit what the AI can do",
+            "Give the AI unrestricted access so it can decide what is safe",
+            "Ignore prompt injection because it only affects chatbots"
+        ],
 
-    correctAnswer: 1
-  }
+        correctAnswer: 1
+    }
 };
 
 const agenticLesson = {
-  id: "agentic-ai",
-  title: "Agentic AI",
+    id: "agentic-ai",
+    title: "Agentic AI",
 
-  introduction: `
+    introduction: `
     A normal LLM mainly responds to a prompt.
 
     An agentic AI system can go further by using tools,
@@ -363,7 +363,7 @@ const agenticLesson = {
     to work toward a goal.
   `,
 
-  explanation: `
+    explanation: `
     A simple agentic loop looks like:
 
     Goal → Decide next step → Use tool → Observe result → Continue
@@ -381,68 +381,68 @@ const agenticLesson = {
     narrow tools and human approval for high-impact actions.
   `,
 
-  example: {
-    weak: `
+    example: {
+        weak: `
       Give an AI agent unrestricted access to production systems
       and tell it to fix whatever it finds.
     `,
 
-    better: `
+        better: `
       Give the agent only the read access it needs to investigate
       the issue, restrict the tools it can use, and require human
       approval before any production change.
     `
-  },
+    },
 
-  exercise: {
-    question: "Which permissions are appropriate for a log-analysis agent?",
+    exercise: {
+        question: "Which permissions are appropriate for a log-analysis agent?",
 
-    options: [
-      {
-        text: "Read application logs",
-        correct: true
-      },
-      {
-        text: "Read monitoring metrics",
-        correct: true
-      },
-      {
-        text: "Read deployment history",
-        correct: true
-      },
-      {
-        text: "Delete production records",
-        correct: false
-      },
-      {
-        text: "Change user permissions",
-        correct: false
-      },
-      {
-        text: "Restart production services without approval",
-        correct: false
-      }
-    ]
-  },
+        options: [
+            {
+                text: "Read application logs",
+                correct: true
+            },
+            {
+                text: "Read monitoring metrics",
+                correct: true
+            },
+            {
+                text: "Read deployment history",
+                correct: true
+            },
+            {
+                text: "Delete production records",
+                correct: false
+            },
+            {
+                text: "Change user permissions",
+                correct: false
+            },
+            {
+                text: "Restart production services without approval",
+                correct: false
+            }
+        ]
+    },
 
-  quiz: {
-    question: "Why does agentic AI require stronger safeguards than a normal chatbot?",
+    quiz: {
+        question: "Why does agentic AI require stronger safeguards than a normal chatbot?",
 
-    answers: [
-      "Because agents always use larger models",
-      "Because agents can use tools and turn incorrect decisions into real actions",
-      "Because agents cannot access external systems",
-      "Because agents do not need human oversight"
-    ],
+        answers: [
+            "Because agents always use larger models",
+            "Because agents can use tools and turn incorrect decisions into real actions",
+            "Because agents cannot access external systems",
+            "Because agents do not need human oversight"
+        ],
 
-    correctAnswer: 1
-  }
+        correctAnswer: 1
+    }
 };
 const practicalLesson = {
-  id: "practical-exercise",
-  title: "Practical Exercise",
+    id: "practical-exercise",
+    title: "Practical Exercise",
 
-  introduction: `
+    introduction: `
     This final exercise combines the main ideas from the course.
 
     The goal is to recognize when a request is too vague,
@@ -450,7 +450,7 @@ const practicalLesson = {
     the AI system is allowed to take actions.
   `,
 
-  explanation: `
+    explanation: `
     Consider the following prompt:
 
     "Our application is broken. Find the problem and fix it."
@@ -462,12 +462,12 @@ const practicalLesson = {
     how the result should be verified.
   `,
 
-  example: {
-    weak: `
+    example: {
+        weak: `
       Our application is broken. Find the problem and fix it.
     `,
 
-    better: `
+        better: `
       Investigate the failed application job in the test environment.
 
       Use the supplied logs from 10:00 to 10:15 and identify
@@ -478,47 +478,47 @@ const practicalLesson = {
       Separate observations from assumptions and provide
       verification steps for each likely cause.
     `
-  },
+    },
 
-  exercise: {
-    question: "Which information would improve the original request?",
+    exercise: {
+        question: "Which information would improve the original request?",
 
-    options: [
-      {
-        text: "The affected environment",
-        correct: true
-      },
-      {
-        text: "Relevant logs or evidence",
-        correct: true
-      },
-      {
-        text: "Clear constraints",
-        correct: true
-      },
-      {
-        text: "The expected output",
-        correct: true
-      },
-      {
-        text: "Unrelated documentation",
-        correct: false
-      }
-    ]
-  },
+        options: [
+            {
+                text: "The affected environment",
+                correct: true
+            },
+            {
+                text: "Relevant logs or evidence",
+                correct: true
+            },
+            {
+                text: "Clear constraints",
+                correct: true
+            },
+            {
+                text: "The expected output",
+                correct: true
+            },
+            {
+                text: "Unrelated documentation",
+                correct: false
+            }
+        ]
+    },
 
-  quiz: {
-    question: "What changes when the AI can use tools and perform actions?",
+    quiz: {
+        question: "What changes when the AI can use tools and perform actions?",
 
-    answers: [
-      "Nothing, prompting works exactly the same",
-      "Permissions, safeguards and human approval become more important",
-      "Verification is no longer necessary",
-      "The AI should receive as much access as possible"
-    ],
+        answers: [
+            "Nothing, prompting works exactly the same",
+            "Permissions, safeguards and human approval become more important",
+            "Verification is no longer necessary",
+            "The AI should receive as much access as possible"
+        ],
 
-    correctAnswer: 1
-  }
+        correctAnswer: 1
+    }
 };
 
 export const lessons = [
