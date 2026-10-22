@@ -4,7 +4,7 @@ import { renderPromptComparison } from "./promptcomparison.js";
 import { renderSecurityCheck } from "./securitycheck.js";
 import { renderPermissionCheck } from "./permissioncheck.js";
 
-export function renderLesson(lesson, mainElement) {
+export function renderLesson(lesson, mainElement, onComplete) {
     const exerciseSection = lesson.exercise
         ? `
       <section class="exercise">
@@ -96,7 +96,7 @@ export function renderLesson(lesson, mainElement) {
     }
 
     if (lesson.quiz) {
-        renderQuiz(lesson);
+        renderQuiz(lesson, onComplete);
     }
 
     if (lesson.interaction?.type === "prompt-comparison") {

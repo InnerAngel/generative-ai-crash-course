@@ -3,8 +3,10 @@ import { renderLesson } from "./components/lesson.js";
 
 const main = document.querySelector("#main");
 const lessonsNavigation = document.querySelector("#lessons");
+const resetButton = document.querySelector("#reset");
 
 let currentLessonIndex = 0;
+const completedLessons = new Set();
 
 function renderNavigation() {
     lessonsNavigation.innerHTML = "";
@@ -17,6 +19,9 @@ function renderNavigation() {
 
         if (index === currentLessonIndex) {
             button.classList.add("active");
+        }
+        if (completedLessons.has(lesson.id)) {
+            button.classList.add("completed");
         }
 
         button.addEventListener("click", () => {
@@ -62,10 +67,42 @@ function setupLessonNavigation() {
 function renderCurrentLesson() {
     const lesson = lessons[currentLessonIndex];
 
-    renderLesson(lesson, main);
+    renderLesson(
+        lesson,
+        main,
+        () => completeLesson(lesson.id)
+    );
 
     setupLessonNavigation();
     renderNavigation();
 }
 
+renderCurrentLesson();
+
+function updateProgress() {
+    const progress = document.querySelector("#progress");
+    const progressLabel = document.querySelector("#progress-label");
+
+    progress.max = lessons.length;
+    progress.value = completedLessons.size;
+
+    progressLabel.textContent =
+        `${completedLessons.size} / ${lessons.length}`;
+}
+
+function completeLesson(lessonId) {
+    completedLessons.add(lessonId);
+
+    updateProgress();
+    renderNavigation();
+}
+
+resetButton.addEventListener("click", () => {
+  completedLessons.clear();
+
+  updateProgress();
+  renderNavigation();
+});
+
+updateProgress();
 renderCurrentLesson();

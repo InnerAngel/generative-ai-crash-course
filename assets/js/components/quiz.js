@@ -1,25 +1,33 @@
-export function renderQuiz(lesson) {
-    const answersContainer = document.querySelector("#quiz-answers");
-    const feedback = document.querySelector("#quiz-feedback");
+export function renderQuiz(lesson, onComplete) {
+  const answersContainer =
+    document.querySelector("#quiz-answers");
 
-    if (!answersContainer || !feedback || !lesson.quiz) {
-        return;
-    }
+  const feedback =
+    document.querySelector("#quiz-feedback");
 
-    lesson.quiz.answers.forEach((answer, index) => {
-        const button = document.createElement("button");
+  if (!answersContainer || !feedback || !lesson.quiz) {
+    return;
+  }
 
-        button.type = "button";
-        button.textContent = answer;
+  lesson.quiz.answers.forEach((answer, index) => {
+    const button = document.createElement("button");
 
-        button.addEventListener("click", () => {
-            if (index === lesson.quiz.correctAnswer) {
-                feedback.textContent = "Correct.";
-            } else {
-                feedback.textContent = "Not quite. Try again.";
-            }
-        });
+    button.type = "button";
+    button.textContent = answer;
 
-        answersContainer.appendChild(button);
+    button.addEventListener("click", () => {
+      if (index === lesson.quiz.correctAnswer) {
+        feedback.textContent = "Correct.";
+
+        if (onComplete) {
+          onComplete();
+        }
+      } else {
+        feedback.textContent =
+          "Not quite. Try again.";
+      }
     });
+
+    answersContainer.appendChild(button);
+  });
 }
