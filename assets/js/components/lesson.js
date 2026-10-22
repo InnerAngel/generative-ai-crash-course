@@ -7,7 +7,7 @@ import { renderPermissionCheck } from "./permissioncheck.js";
 export function renderLesson(lesson, mainElement, onComplete) {
     const exerciseSection = lesson.exercise
         ? `
-      <section class="exercise">
+    <section class="exercise">
         <h2>Try it yourself</h2>
 
         <p>${lesson.exercise.question}</p>
@@ -19,7 +19,7 @@ export function renderLesson(lesson, mainElement, onComplete) {
         </button>
 
         <p id="exercise-feedback" aria-live="polite"></p>
-      </section>
+    </section>
     `
         : "";
 
@@ -42,7 +42,7 @@ export function renderLesson(lesson, mainElement, onComplete) {
 
     const quizSection = lesson.quiz
         ? `
-      <section class="quiz">
+    <section class="quiz">
         <h2>Quick check</h2>
 
         <p>${lesson.quiz.question}</p>
@@ -50,27 +50,29 @@ export function renderLesson(lesson, mainElement, onComplete) {
         <div id="quiz-answers"></div>
 
         <p id="quiz-feedback" aria-live="polite"></p>
-      </section>
+    </section>
     `
         : "";
 
     mainElement.innerHTML = `
     <article>
       <h1>${lesson.title}</h1>
-
       <p>${lesson.introduction}</p>
-
       <p>${lesson.explanation}</p>
 
-      <section class="lesson-example">
+    <section class="lesson-example">
         <h2>Example</h2>
 
-        <h3>Weak</h3>
-        <p>${lesson.example.weak}</p>
+        <div class="example example-weak">
+            <h3>Weak</h3>
+            <p>${lesson.example.weak}</p>
+        </div>
 
-        <h3>Better</h3>
-        <p>${lesson.example.better}</p>
-      </section>
+        <div class="example example-better">
+            <h3>Better</h3>
+            <p>${lesson.example.better}</p>
+        </div>
+    </section>
 
       ${exerciseSection}
       ${interactionSection}

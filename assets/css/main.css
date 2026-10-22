@@ -136,3 +136,24 @@ nav button:hover {
   margin-top: 8px;
   white-space: pre-line;
 }
+
+/* EXAMPLE */
+.example {
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.example p {
+  margin-bottom: 0;
+  white-space: pre-line;
+}
+
+.example-weak {
+  border-left: 4px solid #E91B1B;
+}
+
+.example-better {
+  border-left: 4px solid #B4EA1B;
+}
