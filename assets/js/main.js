@@ -13,8 +13,14 @@ function renderNavigation() {
 
         button.textContent = lesson.title;
 
+        if (index === currentLessonIndex) {
+            button.classList.add("active");
+        }
+
         button.addEventListener("click", () => {
             currentLessonIndex = index;
+
+            renderNavigation();
             renderLesson();
         });
 
@@ -69,7 +75,7 @@ function renderLesson() {
 
     </article>
   `;
-    if(lesson.exercise) {
+    if (lesson.exercise) {
         renderExercise(lesson);
     }
     renderQuiz(lesson);
@@ -136,25 +142,29 @@ function renderExercise(lesson) {
 }
 
 function setupLessonNavigation() {
-  const previousButton = document.querySelector("#previous-lesson");
-  const nextButton = document.querySelector("#next-lesson");
+    const previousButton = document.querySelector("#previous-lesson");
+    const nextButton = document.querySelector("#next-lesson");
 
-  previousButton.disabled = currentLessonIndex === 0;
-  nextButton.disabled = currentLessonIndex === lessons.length - 1;
+    previousButton.disabled = currentLessonIndex === 0;
+    nextButton.disabled = currentLessonIndex === lessons.length - 1;
 
-  previousButton.addEventListener("click", () => {
-    if (currentLessonIndex > 0) {
-      currentLessonIndex--;
-      renderLesson();
-    }
-  });
+    previousButton.addEventListener("click", () => {
+        if (currentLessonIndex > 0) {
+            currentLessonIndex--;
 
-  nextButton.addEventListener("click", () => {
-    if (currentLessonIndex < lessons.length - 1) {
-      currentLessonIndex++;
-      renderLesson();
-    }
-  });
+            renderNavigation();
+            renderLesson();
+        }
+    });
+
+    nextButton.addEventListener("click", () => {
+        if (currentLessonIndex < lessons.length - 1) {
+            currentLessonIndex++;
+
+            renderNavigation();
+            renderLesson();
+        }
+    });
 }
 
 renderNavigation();
