@@ -1,12 +1,18 @@
 import { lessons } from "./content.js";
 import { renderLesson } from "./components/lesson.js";
 
+const STORAGE_KEY = "genai-course-ski-v1";
 const main = document.querySelector("#main");
 const lessonsNavigation = document.querySelector("#lessons");
 const resetButton = document.querySelector("#reset");
 
+
 let currentLessonIndex = 0;
-const completedLessons = new Set();
+const savedProgress = JSON.parse(
+  localStorage.getItem(STORAGE_KEY) || "[]"
+);
+
+const completedLessons = new Set(savedProgress);
 
 function renderNavigation() {
     lessonsNavigation.innerHTML = "";
@@ -91,14 +97,21 @@ function updateProgress() {
 }
 
 function completeLesson(lessonId) {
-    completedLessons.add(lessonId);
+  completedLessons.add(lessonId);
 
-    updateProgress();
-    renderNavigation();
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify([...completedLessons])
+  );
+
+  updateProgress();
+  renderNavigation();
 }
 
 resetButton.addEventListener("click", () => {
   completedLessons.clear();
+
+  localStorage.removeItem(STORAGE_KEY);
 
   updateProgress();
   renderNavigation();
