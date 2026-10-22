@@ -438,6 +438,88 @@ const agenticLesson = {
     correctAnswer: 1
   }
 };
+const practicalLesson = {
+  id: "practical-exercise",
+  title: "Practical Exercise",
+
+  introduction: `
+    This final exercise combines the main ideas from the course.
+
+    The goal is to recognize when a request is too vague,
+    what information is missing, and what should change if
+    the AI system is allowed to take actions.
+  `,
+
+  explanation: `
+    Consider the following prompt:
+
+    "Our application is broken. Find the problem and fix it."
+
+    This request is too broad to use safely or reliably.
+
+    A better request should define the environment, scope,
+    relevant evidence, constraints, expected output and
+    how the result should be verified.
+  `,
+
+  example: {
+    weak: `
+      Our application is broken. Find the problem and fix it.
+    `,
+
+    better: `
+      Investigate the failed application job in the test environment.
+
+      Use the supplied logs from 10:00 to 10:15 and identify
+      the most likely cause.
+
+      Do not make production changes.
+
+      Separate observations from assumptions and provide
+      verification steps for each likely cause.
+    `
+  },
+
+  exercise: {
+    question: "Which information would improve the original request?",
+
+    options: [
+      {
+        text: "The affected environment",
+        correct: true
+      },
+      {
+        text: "Relevant logs or evidence",
+        correct: true
+      },
+      {
+        text: "Clear constraints",
+        correct: true
+      },
+      {
+        text: "The expected output",
+        correct: true
+      },
+      {
+        text: "Unrelated documentation",
+        correct: false
+      }
+    ]
+  },
+
+  quiz: {
+    question: "What changes when the AI can use tools and perform actions?",
+
+    answers: [
+      "Nothing, prompting works exactly the same",
+      "Permissions, safeguards and human approval become more important",
+      "Verification is no longer necessary",
+      "The AI should receive as much access as possible"
+    ],
+
+    correctAnswer: 1
+  }
+};
 
 export const lessons = [
     behaviourLesson,
@@ -445,6 +527,7 @@ export const lessons = [
     promptStructureLesson,
     verificationLesson,
     securityLesson,
-    agenticLesson
+    agenticLesson,
+    practicalLesson
 
 ];
