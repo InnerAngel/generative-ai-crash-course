@@ -182,6 +182,37 @@ const promptStructureLesson = {
         ]
     },
 
+    interaction: {
+        type: "prompt-comparison",
+
+        question: "Which prompt is more effective?",
+
+        options: [
+            {
+                label: "Prompt A",
+                text: "Why is this failing?"
+            },
+            {
+                label: "Prompt B",
+                text: `
+        Investigate the failed test-environment job.
+
+        Use the supplied logs from 10:00 to 10:15.
+
+        Identify the most likely cause, provide supporting evidence,
+        and state when the evidence is inconclusive.
+      `
+            }
+        ],
+
+        correctAnswer: 1,
+
+        explanation: `
+    Prompt B is better because it defines the task, scope,
+    relevant evidence and expected output.
+  `
+    },
+
     quiz: {
         question: "When is few-shot prompting more useful than zero-shot prompting?",
 

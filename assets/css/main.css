@@ -119,3 +119,20 @@ nav button:hover {
     cursor: pointer;
 }
 
+#interaction {
+  display: grid;
+  gap: 16px;
+  margin: 16px 0;
+}
+
+#interaction button {
+  text-align: left;
+  padding: 16px;
+  cursor: pointer;
+}
+
+#interaction button span {
+  display: block;
+  margin-top: 8px;
+  white-space: pre-line;
+}

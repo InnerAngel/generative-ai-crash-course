@@ -1,5 +1,6 @@
 import { renderQuiz } from "./quiz.js";
 import { renderExercise } from "./exercise.js";
+import { renderPromptComparison } from "./promptcomparison.js";
 
 export function renderLesson(lesson, mainElement) {
     const exerciseSection = lesson.exercise
@@ -18,6 +19,23 @@ export function renderLesson(lesson, mainElement) {
         <p id="exercise-feedback" aria-live="polite"></p>
       </section>
     `
+        : "";
+
+    const interactionSection = lesson.interaction
+        ? `
+    <section class="interaction">
+      <h2>Try it yourself</h2>
+
+      <p>${lesson.interaction.question}</p>
+
+      <div id="interaction"></div>
+
+      <p
+        id="interaction-feedback"
+        aria-live="polite"
+      ></p>
+    </section>
+  `
         : "";
 
     const quizSection = lesson.quiz
@@ -53,9 +71,9 @@ export function renderLesson(lesson, mainElement) {
       </section>
 
       ${exerciseSection}
-
+      ${interactionSection}
       ${quizSection}
-
+      
       <nav
         class="lesson-navigation"
         aria-label="Lesson navigation"
@@ -77,5 +95,9 @@ export function renderLesson(lesson, mainElement) {
 
     if (lesson.quiz) {
         renderQuiz(lesson);
+    }
+
+    if (lesson.interaction?.type === "prompt-comparison") {
+        renderPromptComparison(lesson);
     }
 }
