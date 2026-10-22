@@ -368,6 +368,35 @@ const securityLesson = {
         ]
     },
 
+    interaction: {
+        type: "security-check",
+
+        question: "Would you share this information with an AI system?",
+
+        items: [
+            {
+                text: "A production API key",
+                safe: false,
+                explanation: "Credentials should not be shared with an AI system unless there is a specifically approved and controlled reason."
+            },
+            {
+                text: "Public documentation",
+                safe: true,
+                explanation: "Public information generally does not create the same confidentiality risk."
+            },
+            {
+                text: "A sanitized log excerpt with no credentials or personal data",
+                safe: true,
+                explanation: "Sanitized technical information can be appropriate when unnecessary sensitive data has been removed."
+            },
+            {
+                text: "A full customer database export",
+                safe: false,
+                explanation: "A database export may contain personal, confidential or unnecessary information."
+            }
+        ]
+    },
+    
     quiz: {
         question: "What is the safest approach when an AI system processes external documents or web content?",
 
