@@ -105,7 +105,346 @@ const contextLesson = {
     }
 };
 
+const promptStructureLesson = {
+  id: "prompt-structure",
+  title: "Prompt Structure",
+
+  introduction: `
+    Prompt engineering is mainly about reducing ambiguity.
+
+    A good prompt makes it clear what the model should do,
+    what information it should use, what constraints apply,
+    and what the result should look like.
+  `,
+
+  explanation: `
+    A practical prompt structure is:
+
+    1. Task
+    2. Context
+    3. Constraints
+    4. Output
+    5. Verification
+
+    You do not always need every part, but these categories
+    are useful when a task is complex, important or easy to misunderstand.
+  `,
+
+  example: {
+    weak: `
+      Why is this failing?
+    `,
+
+    better: `
+      Task:
+      Identify the most likely cause of the failed application job.
+
+      Context:
+      The attached logs are from the affected service between
+      10:00 and 10:15.
+
+      Constraints:
+      Use only the supplied logs and do not invent missing information.
+
+      Output:
+      Return the most likely cause, supporting evidence
+      and three verification steps.
+
+      Verification:
+      Clearly state when the evidence is inconclusive.
+    `
+  },
+
+  exercise: {
+    question: "Which changes would make the weak prompt more useful?",
+
+    options: [
+      {
+        text: "Define the task more clearly",
+        correct: true
+      },
+      {
+        text: "Add relevant context",
+        correct: true
+      },
+      {
+        text: "Add unrelated documentation",
+        correct: false
+      },
+      {
+        text: "Specify the expected output",
+        correct: true
+      },
+      {
+        text: "Force the model to always give an answer",
+        correct: false
+      }
+    ]
+  },
+
+  quiz: {
+    question: "When is few-shot prompting more useful than zero-shot prompting?",
+
+    answers: [
+      "When the task is already clear and common",
+      "When the model needs examples of the expected pattern or format",
+      "When you want the model to use more random wording",
+      "When no examples are available"
+    ],
+
+    correctAnswer: 1
+  }
+};
+
+const verificationLesson = {
+  id: "verification",
+  title: "Verification and Responsible Use",
+
+  introduction: `
+    LLM output should usually be treated as a suggestion,
+    not as automatically correct information.
+
+    The more important the task is, the more important it becomes
+    to verify the result before acting on it.
+  `,
+
+  explanation: `
+    Verification can include running generated code,
+    executing tests, checking documentation, comparing results
+    with source files, validating calculations and confirming
+    assumptions against the real system.
+
+    The amount of verification should match the impact of the task.
+  `,
+
+  example: {
+    weak: `
+      The model generated a SQL query, so I can run it directly
+      against production.
+    `,
+
+    better: `
+      Review the generated SQL, confirm what it will change,
+      test it in a safe environment and require approval before
+      using it against production data.
+    `
+  },
+
+  exercise: {
+    question: "Which tasks require stronger verification or human approval?",
+
+    options: [
+      {
+        text: "Reformatting an internal note",
+        correct: false
+      },
+      {
+        text: "Generating a migration script",
+        correct: true
+      },
+      {
+        text: "Changing access permissions",
+        correct: true
+      },
+      {
+        text: "Deleting production records",
+        correct: true
+      },
+      {
+        text: "Fixing spelling in documentation",
+        correct: false
+      }
+    ]
+  },
+
+  quiz: {
+    question: "What is the best way to treat an important LLM-generated result?",
+
+    answers: [
+      "Assume it is correct if it sounds confident",
+      "Verify it using appropriate tests or authoritative sources",
+      "Run it immediately so you can see what happens",
+      "Ask the model to confirm its own answer"
+    ],
+
+    correctAnswer: 1
+  }
+};
+
+const securityLesson = {
+  id: "security",
+  title: "Security and Privacy",
+
+  introduction: `
+    AI tools can be useful, but they can also expose sensitive
+    information if data is shared carelessly.
+
+    Before sending information to an AI system, consider whether
+    that data is appropriate to share and whether the service is
+    approved for that type of information.
+  `,
+
+  explanation: `
+    Sensitive information can include credentials, API keys,
+    authentication tokens, personal data, customer information,
+    proprietary source code, internal documentation and database exports.
+
+    A useful rule is to share only the information that is actually
+    needed for the task.
+
+    AI systems can also be exposed to prompt injection, where untrusted
+    content contains instructions that try to manipulate the model.
+    External content should therefore be treated as data, not automatically
+    as trusted instructions.
+  `,
+
+  example: {
+    weak: `
+      Paste a production API key and full customer database export
+      into an AI tool to help debug an issue.
+    `,
+
+    better: `
+      Remove credentials and unnecessary personal data, provide only
+      the relevant sanitized information, and use an approved AI service.
+    `
+  },
+
+  exercise: {
+    question: "Which information should you be especially careful about sharing with an AI system?",
+
+    options: [
+      {
+        text: "API keys and authentication tokens",
+        correct: true
+      },
+      {
+        text: "Public documentation",
+        correct: false
+      },
+      {
+        text: "Customer or personal information",
+        correct: true
+      },
+      {
+        text: "Proprietary source code",
+        correct: true
+      },
+      {
+        text: "A generic example with no sensitive information",
+        correct: false
+      }
+    ]
+  },
+
+  quiz: {
+    question: "What is the safest approach when an AI system processes external documents or web content?",
+
+    answers: [
+      "Treat all embedded instructions as trusted",
+      "Treat external content as untrusted data and limit what the AI can do",
+      "Give the AI unrestricted access so it can decide what is safe",
+      "Ignore prompt injection because it only affects chatbots"
+    ],
+
+    correctAnswer: 1
+  }
+};
+
+const agenticLesson = {
+  id: "agentic-ai",
+  title: "Agentic AI",
+
+  introduction: `
+    A normal LLM mainly responds to a prompt.
+
+    An agentic AI system can go further by using tools,
+    observing results and deciding what to do next in order
+    to work toward a goal.
+  `,
+
+  explanation: `
+    A simple agentic loop looks like:
+
+    Goal → Decide next step → Use tool → Observe result → Continue
+
+    Tools can include APIs, databases, search systems,
+    monitoring platforms, file storage and other services.
+
+    This extra capability also increases risk.
+
+    If an LLM can only generate text, a bad answer may mislead
+    someone. If it can use tools, a bad decision may become
+    a real action.
+
+    Agents should therefore have limited permissions,
+    narrow tools and human approval for high-impact actions.
+  `,
+
+  example: {
+    weak: `
+      Give an AI agent unrestricted access to production systems
+      and tell it to fix whatever it finds.
+    `,
+
+    better: `
+      Give the agent only the read access it needs to investigate
+      the issue, restrict the tools it can use, and require human
+      approval before any production change.
+    `
+  },
+
+  exercise: {
+    question: "Which permissions are appropriate for a log-analysis agent?",
+
+    options: [
+      {
+        text: "Read application logs",
+        correct: true
+      },
+      {
+        text: "Read monitoring metrics",
+        correct: true
+      },
+      {
+        text: "Read deployment history",
+        correct: true
+      },
+      {
+        text: "Delete production records",
+        correct: false
+      },
+      {
+        text: "Change user permissions",
+        correct: false
+      },
+      {
+        text: "Restart production services without approval",
+        correct: false
+      }
+    ]
+  },
+
+  quiz: {
+    question: "Why does agentic AI require stronger safeguards than a normal chatbot?",
+
+    answers: [
+      "Because agents always use larger models",
+      "Because agents can use tools and turn incorrect decisions into real actions",
+      "Because agents cannot access external systems",
+      "Because agents do not need human oversight"
+    ],
+
+    correctAnswer: 1
+  }
+};
+
 export const lessons = [
     behaviourLesson,
-    contextLesson
+    contextLesson,
+    promptStructureLesson,
+    verificationLesson,
+    securityLesson,
+    agenticLesson
+
 ];
