@@ -396,7 +396,7 @@ const securityLesson = {
             }
         ]
     },
-    
+
     quiz: {
         question: "What is the safest approach when an AI system processes external documents or web content?",
 
@@ -484,7 +484,38 @@ const agenticLesson = {
             }
         ]
     },
+    interaction: {
+        type: "permission-check",
 
+        question: "Which permissions should a log-analysis agent receive?",
+
+        permissions: [
+            {
+                text: "Read application logs",
+                allowed: true
+            },
+            {
+                text: "Read monitoring metrics",
+                allowed: true
+            },
+            {
+                text: "Read deployment history",
+                allowed: true
+            },
+            {
+                text: "Delete production records",
+                allowed: false
+            },
+            {
+                text: "Change user permissions",
+                allowed: false
+            },
+            {
+                text: "Restart production services without approval",
+                allowed: false
+            }
+        ]
+    },
     quiz: {
         question: "Why does agentic AI require stronger safeguards than a normal chatbot?",
 

@@ -2,6 +2,7 @@ import { renderQuiz } from "./quiz.js";
 import { renderExercise } from "./exercise.js";
 import { renderPromptComparison } from "./promptcomparison.js";
 import { renderSecurityCheck } from "./securitycheck.js";
+import { renderPermissionCheck } from "./permissioncheck.js";
 
 export function renderLesson(lesson, mainElement) {
     const exerciseSection = lesson.exercise
@@ -108,5 +109,8 @@ export function renderLesson(lesson, mainElement) {
 
     if (lesson.interaction?.type === "security-check") {
         renderSecurityCheck(lesson);
+    }
+    if (lesson.interaction?.type === "permission-check") {
+        renderPermissionCheck(lesson);
     }
 }
