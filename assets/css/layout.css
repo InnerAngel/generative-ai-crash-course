@@ -1,0 +1,267 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: var(--header-height);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 var(--space-lg);
+
+    background: rgba(255, 255, 255, 0.96);
+    border-bottom: 1px solid var(--color-border);
+
+    z-index: 100;
+}
+
+.logo-img {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-img img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    border-radius: var(--radius-sm);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.saved {
+    color: var(--color-muted);
+    font-size: 0.85rem;
+}
+
+#menu {
+    display: none;
+}
+
+#sidebar {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    bottom: 0;
+
+    width: var(--sidebar-width);
+
+    display: flex;
+    flex-direction: column;
+
+    padding: var(--space-lg);
+
+    background: var(--color-surface);
+    border-right: 1px solid var(--color-border);
+
+    overflow-y: auto;
+}
+
+.course-label {
+    margin-bottom: var(--space-sm);
+
+    color: var(--color-muted);
+
+    font-size: 0.75rem;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+#sidebar h2 {
+    margin-bottom: var(--space-sm);
+    font-size: 1.3rem;
+}
+
+.muted {
+    margin-bottom: var(--space-lg);
+    color: var(--color-muted);
+    font-size: 0.9rem;
+}
+
+.progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: var(--space-sm);
+
+    font-size: 0.85rem;
+}
+
+#progress-label {
+    color: var(--color-primary);
+}
+
+progress {
+    width: 100%;
+    height: 8px;
+
+    margin-bottom: var(--space-lg);
+
+    appearance: none;
+}
+
+progress::-webkit-progress-bar {
+    background: #e4e7eb;
+    border-radius: 999px;
+}
+
+progress::-webkit-progress-value {
+    background: var(--color-primary);
+    border-radius: 999px;
+}
+
+progress::-moz-progress-bar {
+    background: var(--color-primary);
+    border-radius: 999px;
+}
+
+#lessons {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+#lessons button {
+    width: 100%;
+
+    padding: 10px 12px;
+
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+
+    background: transparent;
+
+    text-align: left;
+    cursor: pointer;
+}
+
+#lessons button:hover {
+    background: #e8ebef;
+}
+
+#lessons button.active {
+    background: white;
+    border-color: var(--color-border);
+    font-weight: 600;
+    box-shadow: var(--shadow-sm);
+}
+
+#lessons button.completed {
+    color: var(--color-muted);
+}
+
+#lessons button.completed.active {
+    color: var(--color-text);
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+    padding-top: var(--space-xl);
+}
+
+.tiny-label {
+    display: block;
+
+    margin-bottom: var(--space-sm);
+
+    color: var(--color-muted);
+
+    font-size: 0.7rem;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+}
+
+.text-button {
+    padding: 0;
+    border: 0;
+
+    color: var(--color-muted);
+    background: none;
+
+    font-size: 0.85rem;
+    text-decoration: underline;
+
+    cursor: pointer;
+}
+
+.text-button:hover {
+    color: var(--color-text);
+}
+
+#main {
+    min-height: 100vh;
+
+    margin-left: var(--sidebar-width);
+
+    padding:
+        calc(var(--header-height) + var(--space-xl)) var(--space-xl) var(--space-2xl);
+}
+
+#main article {
+    width: 100%;
+    max-width: var(--content-width);
+    margin: 0 auto;
+}
+
+#main article>p {
+    max-width: 70ch;
+
+    color: #374151;
+    font-size: 1.05rem;
+}
+
+article section {
+    margin-top: var(--space-xl);
+}
+
+.lesson-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-md);
+
+    margin-top: var(--space-2xl);
+    padding-top: var(--space-lg);
+
+    border-top: 1px solid var(--color-border);
+}
+
+.lesson-navigation button {
+    min-width: 120px;
+}
+
+noscript {
+    display: block;
+
+    margin-left: var(--sidebar-width);
+    padding: var(--space-lg);
+
+    color: var(--color-danger-text);
+    background: var(--color-danger-bg);
+}
+
+@media (max-width: 1000px) {
+    :root {
+        --sidebar-width: 240px;
+    }
+
+    #main {
+        padding-left: var(--space-lg);
+        padding-right: var(--space-lg);
+    }
+
+    .saved {
+        display: none;
+    }
+}
