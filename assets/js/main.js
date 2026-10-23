@@ -6,6 +6,7 @@ const STORAGE_KEY = "genai-course-skibidi-v1";
 const main = document.querySelector("#main");
 const lessonsNavigation = document.querySelector("#lessons");
 const resetButton = document.querySelector("#reset");
+const progress = document.querySelector("#progress");
 const progressLabel = document.querySelector("#progress-label");
 
 let currentLessonIndex = 0;
