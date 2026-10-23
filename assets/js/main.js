@@ -1,5 +1,5 @@
 import { lessons } from "./content.js";
-import { renderLesson } from "./components/lesson.js";
+import { renderLesson } from "./lesson.js";
 
 const STORAGE_KEY = "genai-course-ski-v1";
 const main = document.querySelector("#main");

@@ -1,8 +1,8 @@
 import { renderQuiz } from "./quiz.js";
-import { renderExercise } from "./exercise.js";
-import { renderPromptComparison } from "./promptcomparison.js";
-import { renderSecurityCheck } from "./securitycheck.js";
-import { renderPermissionCheck } from "./permissioncheck.js";
+import { renderExercise } from "./interactions/exercise.js";
+import { renderPromptComparison } from "./interactions/promptcomparison.js";
+import { renderSecurityCheck } from "./interactions/securitycheck.js";
+import { renderPermissionCheck } from "./interactions/permissioncheck.js";
 
 export function renderLesson(lesson, mainElement, onComplete) {
     const exerciseSection = lesson.exercise
@@ -63,7 +63,7 @@ export function renderLesson(lesson, mainElement, onComplete) {
     <section class="lesson-example">
         <h2>Example</h2>
 
-        <div class="example example-weak">
+        <div class="example example-weak"> 
             <h3>Weak</h3>
             <p>${lesson.example.weak}</p>
         </div>
@@ -99,10 +99,6 @@ export function renderLesson(lesson, mainElement, onComplete) {
 
     if (lesson.quiz) {
         renderQuiz(lesson, onComplete);
-    }
-
-    if (lesson.interaction?.type === "prompt-comparison") {
-        renderPromptComparison(lesson);
     }
 
     if (lesson.interaction?.type === "prompt-comparison") {
