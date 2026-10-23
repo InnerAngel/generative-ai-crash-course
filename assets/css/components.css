@@ -1,160 +1,166 @@
-.lesson-example, .exercise, .quiz, .interaction {
-  padding: var(--space-lg);
+.lesson-example,
+.exercise,
+.quiz,
+.interaction {
+    padding: var(--space-lg);
 
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
 
-  box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-sm);
 }
 
 .lesson-example {
-  background: white;
+    background: white;
 }
 
 .example {
-  margin-top: var(--space-md);
-  padding: var(--space-md);
+    margin-top: var(--space-md);
+    padding: var(--space-md);
 
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
 
-  background: var(--color-surface);
+    background: var(--color-surface);
 }
 
 .example p {
-  margin: 0;
-  white-space: pre-line;
+    margin: 0;
+    white-space: pre-line;
 }
 
 .example-weak {
-  background: var(--color-danger-bg);
-  border-color: var(--color-danger-border);
+    background: var(--color-danger-bg);
+    border-color: var(--color-danger-border);
 }
 
 .example-weak h3 {
-  color: var(--color-danger-text);
+    color: var(--color-danger-text);
 }
 
 .example-better {
-  background: var(--color-success-bg);
-  border-color: var(--color-success-border);
+    background: var(--color-success-bg);
+    border-color: var(--color-success-border);
 }
 
 .example-better h3 {
-  color: var(--color-success-text);
+    color: var(--color-success-text);
 }
 
-.lesson-example > p {
-  white-space: pre-line;
+.lesson-example>p {
+    white-space: pre-line;
 }
 
 .exercise {
-  background: white;
+    background: white;
 }
 
 #exercise-options {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 
-  margin: var(--space-md) 0;
+    margin: var(--space-md) 0;
 }
 
 #exercise-options label {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
 
-  padding: 12px;
+    padding: 12px;
 
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
 
-  background: var(--color-surface);
+    background: var(--color-surface);
 
-  cursor: pointer;
+    cursor: pointer;
 }
 
 #exercise-options label:hover {
-  border-color: var(--color-border-strong);
-  background: var(--color-surface-alt);
+    border-color: var(--color-border-strong);
+    background: var(--color-surface-alt);
 }
 
 #exercise-options input {
-  margin-top: 4px;
+    margin-top: 4px;
 }
 
 .interaction {
-  background: white;
+    background: white;
 }
 
 #interaction {
-  display: grid;
-  gap: var(--space-md);
+    display: grid;
+    gap: var(--space-md);
 
-  margin: var(--space-md) 0;
+    margin: var(--space-md) 0;
 }
 
-#interaction > label {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
+#interaction>label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
 
-  padding: 12px;
+    padding: 12px;
 
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
 
-  background: var(--color-surface);
+    background: var(--color-surface);
 
-  cursor: pointer;
+    cursor: pointer;
 }
 
-#interaction > label:hover {
-  background: var(--color-surface-alt);
+#interaction>label:hover {
+    background: var(--color-surface-alt);
 }
 
 #interaction button span {
-  display: block;
+    display: block;
 
-  margin-top: var(--space-sm);
+    margin-top: var(--space-sm);
 
-  white-space: pre-line;
+    white-space: pre-line;
 
-  color: var(--color-muted);
+    color: var(--color-muted);
 }
 
 .quiz {
-  background: white;
+    background: white;
 }
 
 #quiz-answers {
-  display: grid;
-  gap: 10px;
+    display: grid;
+    gap: 10px;
 
-  margin-top: var(--space-md);
+    margin-top: var(--space-md);
 }
 
 #quiz-answers button {
-  width: 100%;
-  text-align: left;
+    width: 100%;
+    text-align: left;
 }
 
-.quiz button, .interaction button, .exercise button, .lesson-navigation button,
+.quiz button,
+.interaction button,
+.exercise button,
+.lesson-navigation button,
 #check-exercise {
-  padding: 10px 16px;
+    padding: 10px 16px;
 
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
 
-  background: white;
+    background: white;
 
-  cursor: pointer;
+    cursor: pointer;
 
-  transition:
-    background-color 0.15s ease,
-    border-color 0.15s ease,
-    transform 0.05s ease;
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease,
+        transform 0.05s ease;
 }
 
 .quiz button:hover,
@@ -162,8 +168,8 @@
 .exercise button:hover,
 .lesson-navigation button:hover,
 #check-exercise:hover {
-  background: var(--color-surface-alt);
-  border-color: var(--color-border-strong);
+    background: var(--color-surface-alt);
+    border-color: var(--color-border-strong);
 }
 
 .quiz button:active,
@@ -171,58 +177,70 @@
 .exercise button:active,
 .lesson-navigation button:active,
 #check-exercise:active {
-  transform: translateY(1px);
+    transform: translateY(1px);
 }
 
 button:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
+    opacity: 0.45;
+    cursor: not-allowed;
 }
 
 #quiz-feedback,
 #exercise-feedback,
 #interaction-feedback {
-  min-height: 1.5em;
+    min-height: 1.5em;
 
-  margin-top: var(--space-md);
-  margin-bottom: 0;
+    margin-top: var(--space-md);
+    margin-bottom: 0;
 
-  font-weight: 600;
+    font-weight: 600;
 }
 
 .introduction-page {
-  padding-top: var(--space-lg);
+    padding-top: var(--space-lg);
 }
 
 .introduction-lead {
-  max-width: 65ch;
+    max-width: 65ch;
 
-  margin-bottom: var(--space-lg);
+    margin-bottom: var(--space-lg);
 
-  color: var(--color-text);
+    color: var(--color-text);
 
-  font-size: 1.2rem;
-  line-height: 1.7;
+    font-size: 1.2rem;
+    line-height: 1.7;
 }
 
 .course-goals {
-  margin-top: var(--space-xl);
-  padding: var(--space-lg);
+    margin-top: var(--space-xl);
+    padding: var(--space-lg);
 
-  background: var(--color-surface);
+    background: var(--color-surface);
 
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
 }
 
 .course-goals ul {
-  display: grid;
-  gap: 12px;
+    display: grid;
+    gap: 12px;
 
-  margin: 0;
-  padding-left: 20px;
+    margin: 0;
+    padding-left: 20px;
 }
 
 .course-start {
-  margin-top: var(--space-xl);
+    margin-top: var(--space-xl);
+}
+
+.lesson-count {
+    margin-bottom: var(--space-sm);
+
+    color: var(--color-muted);
+
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }

@@ -4,40 +4,47 @@ import { renderPromptComparison } from "./interactions/promptcomparison.js";
 import { renderSecurityCheck } from "./interactions/securitycheck.js";
 import { renderPermissionCheck } from "./interactions/permissioncheck.js";
 
-function renderIntroduction(lesson, mainElement) {
+function renderIntroduction(lesson, mainElement, lessonIndex, totalLessons) {
+    const lessonNumber = String(lessonIndex + 1).padStart(2, "0");
+    const totalLessonNumber = String(totalLessons).padStart(2, "0");
+
     const goals = lesson.goals
         .map(goal => `<li>${goal}</li>`)
         .join("");
 
     mainElement.innerHTML = `
     <article class="introduction-page">
-      <p class="course-label">Generative AI Crash Course</p>
+        <p class="course-label">Generative AI Crash Course</p>
 
-      <h1>${lesson.title}</h1>
+        <p class="lesson-number">
+            Lesson ${lessonNumber} / ${totalLessonNumber}
+        </p>
 
-      <p class="introduction-lead">
-        ${lesson.introduction}
-      </p>
+    <h1>${lesson.title}</h1>
 
-      <p>
+        <p class="introduction-lead">
+            ${lesson.introduction}
+        </p>
+
+        <p>
         ${lesson.explanation}
-      </p>
+        </p>
 
-      <section class="course-goals">
-        <h2>What you will learn</h2>
+    <section class="course-goals">
+    <h2>What you will learn</h2>
 
         <ul>
           ${goals}
         </ul>
-      </section>
+    </section>
 
-      <section class="course-start">
-        <h2>i hope you're hungry</h2>
+    <section class="course-start">
+    <h2>i hope you're hungry</h2>
 
         <p>
           skibidi toilet
         </p>
-      </section>
+    </section>
 
       <nav
         class="lesson-navigation"
@@ -62,11 +69,14 @@ function renderIntroduction(lesson, mainElement) {
   `;
 }
 
-export function renderLesson(lesson, mainElement, onComplete) {
+export function renderLesson(lesson, mainElement, onComplete, lessonIndex, totalLessons) {
     if (lesson.type === "introduction") {
-        renderIntroduction(lesson, mainElement);
+        renderIntroduction(lesson, mainElement, lessonIndex, totalLessons);
         return;
     }
+    const lessonNumber = String(lessonIndex + 1).padStart(2, "0");
+    const totalLessonNumber = String(totalLessons).padStart(2, "0");
+
     const exerciseSection = lesson.exercise
         ? `
     <section class="exercise">
@@ -118,6 +128,9 @@ export function renderLesson(lesson, mainElement, onComplete) {
 
     mainElement.innerHTML = `
     <article>
+        <p class="lesson-number">
+        Lesson ${lessonNumber} / ${totalLessonNumber}
+        </p>
       <h1>${lesson.title}</h1>
       <p>${lesson.introduction}</p>
       <p>${lesson.explanation}</p>

@@ -123,10 +123,7 @@ function setupLessonNavigation() {
 
 
     nextButton.addEventListener("click", () => {
-
-        /*
-          Because introduction has no quiz, start is sufficient for completion.
-        */
+    // Because introduction has no quiz, "start" is sufficient for completion.
         if (lesson.type === "introduction") {
             completeLesson(lesson.id);
         }
@@ -145,7 +142,9 @@ function renderCurrentLesson() {
     renderLesson(
         lesson,
         main,
-        () => completeLesson(lesson.id)
+        () => completeLesson(lesson.id),
+        currentLessonIndex,
+        lessons.length
     );
 
     setupLessonNavigation();
