@@ -43,6 +43,9 @@ function saveProgress() {
 
 
 function updateProgress() {
+    progress.max = lessons.length;
+    progress.value = completedLessons.size;
+
     progressLabel.textContent =
         `${completedLessons.size} / ${lessons.length}`;
 }
@@ -120,7 +123,7 @@ function setupLessonNavigation() {
 
 
     nextButton.addEventListener("click", () => {
-    // Because introduction has no quiz, "start" is sufficient for completion.
+        // Because introduction has no quiz, "start" is sufficient for completion.
         if (lesson.type === "introduction") {
             completeLesson(lesson.id);
         }
