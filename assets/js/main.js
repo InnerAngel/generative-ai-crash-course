@@ -71,7 +71,13 @@ function renderNavigation() {
         const button = document.createElement("button");
 
         button.type = "button";
-        button.textContent = lesson.title;
+
+        const lessonNumber = String(index + 1).padStart(2, "0");
+        const completed = completedLessons.has(lesson.id);
+
+        button.textContent = completed
+            ? `✓ ${lessonNumber} ${lesson.title}`
+            : `${lessonNumber} ${lesson.title}`;
 
         if (index === currentLessonIndex) {
             button.classList.add("active");
@@ -147,20 +153,20 @@ function renderCurrentLesson() {
 }
 
 resetButton.addEventListener("click", () => {
-  const confirmed = window.confirm(
-    "Are you sure you want to reset your course progress?"
-  );
+    const confirmed = window.confirm(
+        "Are you sure you want to reset your course progress?"
+    );
 
-  if (!confirmed) {
-    return;
-  }
+    if (!confirmed) {
+        return;
+    }
 
-  completedLessons.clear();
+    completedLessons.clear();
 
-  localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(STORAGE_KEY);
 
-  updateProgress();
-  renderNavigation();
+    updateProgress();
+    renderNavigation();
 });
 
 // LETS GOOOO
