@@ -65,6 +65,16 @@ header {
     overflow-y: auto;
 }
 
+#sidebar h2 {
+    margin-bottom: var(--space-sm);
+    font-size: 1.3rem;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+    padding-top: var(--space-xl);
+}
+
 .course-label {
     margin-bottom: var(--space-sm);
 
@@ -98,10 +108,7 @@ header {
     font-size: 0.85rem;
 } */
 
-#sidebar h2 {
-    margin-bottom: var(--space-sm);
-    font-size: 1.3rem;
-}
+
 
 .muted {
     margin-bottom: var(--space-lg);
@@ -149,10 +156,6 @@ header {
     color: var(--color-text);
 }
 
-.sidebar-bottom {
-    margin-top: auto;
-    padding-top: var(--space-xl);
-}
 
 .tiny-label {
     display: block;
