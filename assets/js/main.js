@@ -1,18 +1,68 @@
 import { lessons } from "./content.js";
 import { renderLesson } from "./lesson.js";
 
-const STORAGE_KEY = "genai-course-ski-v1";
+const STORAGE_KEY = "genai-course-skibidi-v1";
+
 const main = document.querySelector("#main");
 const lessonsNavigation = document.querySelector("#lessons");
 const resetButton = document.querySelector("#reset");
-
+const progress = document.querySelector("#progress");
+const progressLabel = document.querySelector("#progress-label");
 
 let currentLessonIndex = 0;
-const savedProgress = JSON.parse(
-  localStorage.getItem(STORAGE_KEY) || "[]"
-);
 
-const completedLessons = new Set(savedProgress);
+function loadProgress() {
+    try {
+        const savedProgress = JSON.parse(
+            localStorage.getItem(STORAGE_KEY) || "[]"
+        );
+
+        const validLessonIds = new Set(
+            lessons.map((lesson) => lesson.id)
+        );
+
+        return new Set(
+            savedProgress.filter((lessonId) =>
+                validLessonIds.has(lessonId)
+            )
+        );
+    } catch {
+        return new Set();
+    }
+}
+
+const completedLessons = loadProgress();
+
+
+function saveProgress() {
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify([...completedLessons])
+    );
+}
+
+
+function updateProgress() {
+    progress.max = lessons.length;
+    progress.value = completedLessons.size;
+
+    progressLabel.textContent =
+        `${completedLessons.size} / ${lessons.length}`;
+}
+
+
+function completeLesson(lessonId) {
+    if (completedLessons.has(lessonId)) {
+        return;
+    }
+
+    completedLessons.add(lessonId);
+
+    saveProgress();
+    updateProgress();
+    renderNavigation();
+}
+
 
 function renderNavigation() {
     lessonsNavigation.innerHTML = "";
@@ -26,19 +76,20 @@ function renderNavigation() {
         if (index === currentLessonIndex) {
             button.classList.add("active");
         }
+
         if (completedLessons.has(lesson.id)) {
             button.classList.add("completed");
         }
 
         button.addEventListener("click", () => {
             currentLessonIndex = index;
-
             renderCurrentLesson();
         });
 
         lessonsNavigation.appendChild(button);
     });
 }
+
 
 function setupLessonNavigation() {
     const previousButton =
@@ -47,11 +98,14 @@ function setupLessonNavigation() {
     const nextButton =
         document.querySelector("#next-lesson");
 
+    const lesson = lessons[currentLessonIndex];
+
     previousButton.disabled =
         currentLessonIndex === 0;
 
     nextButton.disabled =
         currentLessonIndex === lessons.length - 1;
+
 
     previousButton.addEventListener("click", () => {
         if (currentLessonIndex > 0) {
@@ -61,7 +115,16 @@ function setupLessonNavigation() {
         }
     });
 
+
     nextButton.addEventListener("click", () => {
+
+        /*
+          Because introduction has no quiz, start is sufficient for completion.
+        */
+        if (lesson.type === "introduction") {
+            completeLesson(lesson.id);
+        }
+
         if (currentLessonIndex < lessons.length - 1) {
             currentLessonIndex++;
 
@@ -83,39 +146,15 @@ function renderCurrentLesson() {
     renderNavigation();
 }
 
-renderCurrentLesson();
-
-function updateProgress() {
-    const progress = document.querySelector("#progress");
-    const progressLabel = document.querySelector("#progress-label");
-
-    progress.max = lessons.length;
-    progress.value = completedLessons.size;
-
-    progressLabel.textContent =
-        `${completedLessons.size} / ${lessons.length}`;
-}
-
-function completeLesson(lessonId) {
-  completedLessons.add(lessonId);
-
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify([...completedLessons])
-  );
-
-  updateProgress();
-  renderNavigation();
-}
-
 resetButton.addEventListener("click", () => {
-  completedLessons.clear();
+    completedLessons.clear();
 
-  localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(STORAGE_KEY);
 
-  updateProgress();
-  renderNavigation();
+    updateProgress();
+    renderNavigation();
 });
 
+// LETS GOOOO
 updateProgress();
 renderCurrentLesson();
