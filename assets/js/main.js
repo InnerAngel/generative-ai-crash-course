@@ -6,7 +6,6 @@ const STORAGE_KEY = "genai-course-skibidi-v1";
 const main = document.querySelector("#main");
 const lessonsNavigation = document.querySelector("#lessons");
 const resetButton = document.querySelector("#reset");
-const progress = document.querySelector("#progress");
 const progressLabel = document.querySelector("#progress-label");
 
 let currentLessonIndex = 0;
@@ -43,9 +42,6 @@ function saveProgress() {
 
 
 function updateProgress() {
-    progress.max = lessons.length;
-    progress.value = completedLessons.size;
-
     progressLabel.textContent =
         `${completedLessons.size} / ${lessons.length}`;
 }
