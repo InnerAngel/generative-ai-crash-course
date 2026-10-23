@@ -4,7 +4,69 @@ import { renderPromptComparison } from "./interactions/promptcomparison.js";
 import { renderSecurityCheck } from "./interactions/securitycheck.js";
 import { renderPermissionCheck } from "./interactions/permissioncheck.js";
 
+function renderIntroduction(lesson, mainElement) {
+    const goals = lesson.goals
+        .map(goal => `<li>${goal}</li>`)
+        .join("");
+
+    mainElement.innerHTML = `
+    <article class="introduction-page">
+      <p class="course-label">LLM LAB</p>
+
+      <h1>${lesson.title}</h1>
+
+      <p class="introduction-lead">
+        ${lesson.introduction}
+      </p>
+
+      <p>
+        ${lesson.explanation}
+      </p>
+
+      <section class="course-goals">
+        <h2>What you will learn</h2>
+
+        <ul>
+          ${goals}
+        </ul>
+      </section>
+
+      <section class="course-start">
+        <h2>i hope you're hungry</h2>
+
+        <p>
+          skibidi toilet
+        </p>
+      </section>
+
+      <nav
+        class="lesson-navigation"
+        aria-label="Lesson navigation"
+      >
+        <button
+          type="button"
+          id="previous-lesson"
+          disabled
+        >
+          Previous
+        </button>
+
+        <button
+          type="button"
+          id="next-lesson"
+        >
+          Start
+        </button>
+      </nav>
+    </article>
+  `;
+}
+
 export function renderLesson(lesson, mainElement, onComplete) {
+    if (lesson.type === "introduction") {
+        renderIntroduction(lesson, mainElement);
+        return;
+    }
     const exerciseSection = lesson.exercise
         ? `
     <section class="exercise">
@@ -92,6 +154,7 @@ export function renderLesson(lesson, mainElement, onComplete) {
       </nav>
     </article>
   `;
+
 
     if (lesson.exercise) {
         renderExercise(lesson);

@@ -1,3 +1,29 @@
+const introductionLesson = {
+    id: "introduction",
+    type: "introduction",
+    title: "Generative AI Crash Course",
+
+    introduction: `
+    Welcome to the Generative AI crash course.
+
+    This course is a practical introduction to working with Large Language
+    Models, prompt engineering, security and agentic AI.
+  `,
+
+    explanation: `
+    Badabadaba bee bob bob bobob bop
+  `,
+
+    goals: [
+        "Understand how LLMs behave",
+        "Know how to provide useful context",
+        "Structure effective prompts",
+        "Recognize security and privacy risks",
+        "Verify AI-generated output",
+        "Understand when an AI agent should and should not be trusted to act"
+    ]
+};
+
 const behaviourLesson = {
     id: "behaviour",
     title: "Behaviour",
@@ -613,6 +639,7 @@ const practicalLesson = {
 };
 
 export const lessons = [
+    introductionLesson,
     behaviourLesson,
     contextLesson,
     promptStructureLesson,
