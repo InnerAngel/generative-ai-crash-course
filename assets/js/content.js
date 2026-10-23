@@ -1,7 +1,7 @@
 const introductionLesson = {
     id: "introduction",
     type: "introduction",
-    title: "Generative AI Crash Course",
+    title: "Introduction",
 
     introduction: `
     Welcome to the Generative AI crash course.

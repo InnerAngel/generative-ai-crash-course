@@ -1,8 +1,6 @@
 .lesson-example, .exercise, .quiz, .interaction {
   padding: var(--space-lg);
 
-  background: var(--color-surface);
-
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
 
@@ -142,10 +140,7 @@
   text-align: left;
 }
 
-.quiz button,
-.interaction button,
-.exercise button,
-.lesson-navigation button,
+.quiz button, .interaction button, .exercise button, .lesson-navigation button,
 #check-exercise {
   padding: 10px 16px;
 

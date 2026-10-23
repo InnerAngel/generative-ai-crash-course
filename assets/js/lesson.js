@@ -11,7 +11,7 @@ function renderIntroduction(lesson, mainElement) {
 
     mainElement.innerHTML = `
     <article class="introduction-page">
-      <p class="course-label">LLM LAB</p>
+      <p class="course-label">Generative AI Crash Course</p>
 
       <h1>${lesson.title}</h1>
 

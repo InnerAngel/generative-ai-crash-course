@@ -147,12 +147,20 @@ function renderCurrentLesson() {
 }
 
 resetButton.addEventListener("click", () => {
-    completedLessons.clear();
+  const confirmed = window.confirm(
+    "Are you sure you want to reset your course progress?"
+  );
 
-    localStorage.removeItem(STORAGE_KEY);
+  if (!confirmed) {
+    return;
+  }
 
-    updateProgress();
-    renderNavigation();
+  completedLessons.clear();
+
+  localStorage.removeItem(STORAGE_KEY);
+
+  updateProgress();
+  renderNavigation();
 });
 
 // LETS GOOOO
